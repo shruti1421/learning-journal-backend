@@ -5,9 +5,10 @@ const connectDB = require('./config/db');
 
 
 const app = express();
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // Connect Database
 dotenv.config({path: '.env'})
 connectDB();
