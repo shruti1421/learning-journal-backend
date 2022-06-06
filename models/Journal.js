@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const JournalSchema = mongoose.Schema({
+    
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+    },
+    
     title:{
         type: String,
     },
