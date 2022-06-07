@@ -28,7 +28,12 @@ const JournalSchema = mongoose.Schema({
     isFavorites:{
         type:Boolean,
         default: false
-    }
+    },
+    sharedWith:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+        unique:true
+    }]
 })
 
 module.exports = mongoose.model('journal',JournalSchema);
