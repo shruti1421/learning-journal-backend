@@ -18,6 +18,7 @@ connectDB();
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/journals', require('./routes/journals'));
+app.use('/api/journals/share', require('./routes/shareJournal'));
 
 const PORT = process.env.PORT || 5000;
 
