@@ -11,14 +11,14 @@ require('dotenv').config()
 // @route  GET  api/auth
 // @desc   Get logged in user
 // @acess  Private 
-router.get('/',auth, async (req,res)=>{
-    try {
-        const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
-      } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-      }
+router.get('/', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @route  POST  api/auth
@@ -61,10 +61,11 @@ router.post(
           payload,
           process.env.jwtSecret,
           {
-            expiresIn: 360000,
+            expiresIn: 36000000000,
           },
           (err, token) => {
             if (err) throw err;
+            // console.log(token)
             res.json({token});
           },
         );

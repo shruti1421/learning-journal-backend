@@ -20,7 +20,7 @@ const Journal = require('../models/Journal');
 
 router.post('/:id', auth, async (req, res) => {
     const journalId = req.params.id;
-
+   
     if (req.body.shared_email == null)
         res.send('Fields cannot be null');
 
@@ -29,13 +29,14 @@ router.post('/:id', auth, async (req, res) => {
         const user = await User.findOne({
             email: req.body.shared_email
         })
-        if (!user)
-            res.send("User to share does not exists")
-        else {
+
+        console.log(user);
+        if (user)
+        {
             const journal = await Journal.findOne({
                 _id: journalId
             })
-            //console.log(journal.user+" "+user._id)
+            console.log(journal.user+" "+user._id)
             if (journal.user.equals(user._id)) {
                 res.send("shared ID cannot be same as author ID");
             } else {
@@ -51,6 +52,9 @@ router.post('/:id', auth, async (req, res) => {
                     res.send("Journal already shared with the requested user")
 
             }
+        }
+        else {
+            res.send("User to share does not exists")
         }
 
     } catch (err) {
