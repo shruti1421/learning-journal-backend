@@ -1,4 +1,5 @@
 const express = require('express');
+const moment=require('moment')
 const router = express.Router();
 const Journal=require("../models/Journal");
 const User = require('../models/User');
@@ -69,7 +70,7 @@ router.put('/:id', auth, async (req,res) =>{
     if(content) journalFields.content = content;
     if(category) journalFields.category = category;
     if(isFavorites) journalFields.isFavorites = isFavorites;
-    journalFields.lastModified=Date.now();
+    journalFields.lastModified=moment().format('MMMM Do YYYY, h:mm:ss a');
 
     try {
         let journal = await Journal.findById(req.params.id);
