@@ -1,3 +1,4 @@
+const moment=require('moment')
 const mongoose = require('mongoose');
 
 const JournalSchema = mongoose.Schema({
@@ -14,12 +15,12 @@ const JournalSchema = mongoose.Schema({
         type: String,
     },
     dateCreated:{
-        type: Date,
-        default:Date.now()
+        type: String,
+        default:moment().format('MMM Do YY')
     },
     lastModified:{
-        type: Date,
-        default: Date.now()
+        type: String,
+        default:moment().format('MMMM Do YYYY, h:mm:ss a')
     },
     category:{
         type:String,
