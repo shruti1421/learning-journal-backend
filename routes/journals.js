@@ -22,6 +22,21 @@ router.get('/', auth, async (req,res)=>{
       }
 });
 
+// @route  GET  api/journals/:id
+// @desc   Get journal by single id
+// @acess  Private
+router.get('/:id', auth, async (req,res)=>{
+    
+    try {
+       //To get all journals of an user with userID req.user.id
+       const id=req.params.id
+        const foundJournal = await Journal.findById(req.params.id)
+        res.send(foundJournal);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 // @route  POST  api/journals
 // @desc   Add new journal
