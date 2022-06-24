@@ -4,6 +4,23 @@ const User = require('../models/User');
 const auth = require("../middleware/auth");
 const Journal = require('../models/Journal');
 
+function checkJournal(foundJournal)
+{
+
+}
+
+/**
+ get all journals which have userid present in sharedWith of a Journal
+ */
+router.get('/',auth, async (req,res) =>{
+
+    Journal.find(function(err,foundJournal){
+        if(!err)
+        res.send(Object.values(foundJournal).filter(journal=>journal.sharedWith.includes(req.user.id)));
+        else
+        res.send(err);
+     });
+})
 
 /**
  check if user email exists in User
@@ -21,40 +38,36 @@ const Journal = require('../models/Journal');
 router.post('/:id', auth, async (req, res) => {
     const journalId = req.params.id;
    
-    if (req.body.shared_email == null)
-        res.send('Fields cannot be null');
+    if (req.body.email === null)
+        res.status(400).json({msg:'Fields cannot be null'});
 
     try {
         //to check if we already have this user
         const user = await User.findOne({
-            email: req.body.shared_email
+            email: req.body.email
         })
 
-        console.log(user);
         if (user)
         {
-            const journal = await Journal.findOne({
-                _id: journalId
-            })
-            console.log(journal.user+" "+user._id)
-            if (journal.user.equals(user._id)) {
-                res.send("shared ID cannot be same as author ID");
-            } else {
+            //console.log(user)
+            let journal = await Journal.findById(req.params.id);
+
+            if (journal.user.toString() === user.id) {
+                 res.status(400).json({msg:"shared email cannot be same as author email"});
+             } else
+             {
                 const sharedUsers = journal.sharedWith;
-                //console.log(sharedUsers)
-                if (!sharedUsers.includes(user._id)) {
-                    sharedUsers.push(user._id)
+                if (!sharedUsers.includes(user.id)) {
+                    sharedUsers.push(user.id)
                     journal.save()
-                    // console.log(journal)
-                    // console.log(user)
-                    res.send("Succesfully shared the journal with requested user!")
+                    res.json({msg:"Succesfully shared the journal with requested user!"})
                 } else
-                    res.send("Journal already shared with the requested user")
+                    res.status(400).json({msg: "Journal already shared with the requested user"})
 
             }
         }
         else {
-            res.send("User to share does not exists")
+            res.status(400).json({ msg: "User to share does not exists"})
         }
 
     } catch (err) {
