@@ -23,7 +23,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/journals', require('./routes/journals'));
 app.use('/api/journals/share', require('./routes/shareJournal'));
-
+app.use('/api/journals/favorites',require('./routes/favorites'))
 const PORT = process.env.PORT || 5000;
 
 

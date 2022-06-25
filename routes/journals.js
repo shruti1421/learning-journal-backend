@@ -22,7 +22,6 @@ router.get('/', auth, async (req,res)=>{
       }
 });
 
-
 // @route  POST  api/journals
 // @desc   Add new journal
 // @acess  Private
