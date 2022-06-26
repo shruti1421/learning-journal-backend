@@ -17,7 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 dotenv.config({path: '.env'})
 connectDB();
 
-
+app.get("/", function(req,res){
+  res.send("Learning Journal Backend")
+});
 // Define Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
