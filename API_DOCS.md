@@ -24,14 +24,14 @@
 | `POST`| Public| Register a user|
 ## Authenticate User
 ```http
- POST  api/auth
+ POST  /api/auth
 ```
 
 | Request | Access    | Description                |
 | :-------- | :------- | :------------------------- |
 | `POST`| Public| Authenticate user and get token|
 ```http
-  GET  api/auth
+  GET  /api/auth
 ```
 
 | Request | Access    | Description                |
@@ -74,14 +74,14 @@
 ## Share Journals
 - ### Display all journals shared with a user
 ```http
-  GET  api/journals/share/
+  GET  /api/journals/share/
 ```
 | Request | Access    | Description                |
 | :-------- | :------- | :------------------------- |
 | `GET`| Private| Get all journals shared with the user|
 - ### Share your journal with a friend
 ```http
-  POST api/journals/share/:id
+  POST /api/journals/share/:id
 ```
 | Request | Access    | Params| Description                |
 | :-------- | :------- |:-----| :------------------------- |
@@ -89,7 +89,7 @@
 
 ## Bookmark your Favorite Journal
 ```http
-  PUT api/journals/favorites/:id
+  PUT /api/journals/favorites/:id
 ```
 | Request | Access    | Params| Description                |
 | :-------- | :------- |:------| :------------------------- |
