@@ -11,15 +11,14 @@ It is a highly scalable, free and high performant one stop solution to:
 - Create your favorite list 
 
 # Application Links
+|Code| Repo Links |Deployment Link
+| :-------- | :------- | :----|
+| Frontend| [Check Here](https://github.com/shruti1421/learning-journal-frontend)|[Check Here](https://learning-journal-app.netlify.app/)|
+| Backend| [Check Here](https://github.com/shruti1421/learning-journal-backend)|[Check Here](https://learning-journal-backend.herokuapp.com/)|
 
-Frontend Code -> [https://github.com/shruti1421/learning-journal-frontend](https://github.com/shruti1421/learning-journal-frontend)
-<br>
-Deployed URL -> [https://learning-journal-app.netlify.app/](https://learning-journal-app.netlify.app/)
-<br>
-Backend Code -> [https://github.com/shruti1421/learning-journal-backend](https://github.com/shruti1421/learning-journal-backend)
-
+# API Reference
+ [API Documentation](./API_DOCS.md)
 # Tech Stack
-
 <b>Backend Server</b>: Express.js
 <br>
 <b>Additional NPM Libraries:</b>
@@ -39,7 +38,7 @@ Backend Code -> [https://github.com/shruti1421/learning-journal-backend](https:/
 <br>
 <b>Authentication and Authorisation</b>: JWT Authentication
 <br>
-<b>Deployment</b>: CI/CD - Netlify
+<b>Deployment</b>: Heroku
 
 # Overall Functionlity
 - Uploading a Journal. 
