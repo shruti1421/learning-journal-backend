@@ -14,7 +14,7 @@ It is a highly scalable, free and high performant one stop solution to:
 |Code| Repo Links |Deployment Link
 | :-------- | :------- | :----|
 | Frontend| [Check Here](https://github.com/shruti1421/learning-journal-frontend)|[Check Here](https://learning-journal-app.netlify.app/)|
-| Backend| [Check Here](https://github.com/shruti1421/learning-journal-backend)|[Check Here](https://learning-journal-backend.herokuapp.com/)|
+| Backend| [Check Here](https://github.com/shruti1421/learning-journal-backend)|[Check Here](https://learning-journal-backend.onrender.com/)|
 
 # API Reference
  [API Documentation](./API_DOCS.md)
